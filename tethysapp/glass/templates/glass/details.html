@@ -1,0 +1,53 @@
+{% extends "glass/base.html" %}
+{% load staticfiles %}
+{% load tethys_gizmos %}
+
+
+
+{% block app_content %}
+<div id="modalViewCompare" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <span class="close-modal" id="close-modalViewCompare">X</span>
+        <div class="modal-content flex-container-row">
+            <div id="compare-container" class="view-compare" >
+                <iframe id="iframe-compare-viewer" name="iframe-compare-viewer" src="/apps/glass/compare/" allowfullscreen></iframe>
+            </div>
+        </div>
+        <!--End modal content-->
+    </div>
+</div>
+{% if sfpt %}
+<h4>Comid: {{ comid }}</h4>
+<h4>Watershed: {{ watershed }}</h4>
+<h4>Subbasin: {{ subbasin }}</h4>
+
+<!--<button id="load-compare" class="btn btn-primary" data-toggle="modal" data-target="#modalViewCompare">Compare</button>-->
+<!--<a href="/apps/glass/compare/" data-toggle="modal" target="#modalViewCompare" class="btn btn-primary">Compare</a>-->
+
+<a class="btn btn-primary" href="/apps/glass/compare/" target="_blank" >Compare</a>
+{% gizmo plot_view timeseries_plot %}
+<!--<script>-->
+    <!--$('.mod_link').on('click',function(){-->
+        <!--var $loading = $('#view-file-loading');-->
+        <!--$('#compare-container').addClass('hidden');-->
+        <!--$loading.removeClass('hidden');-->
+        <!--var details_url = $(this).data('html');-->
+        <!--$('#compare-container')-->
+            <!--.empty()-->
+            <!--.append('<iframe id="iframe-compare-viewer" src="' + details_url + '" allowfullscreen></iframe>');-->
+        <!--$('#modalViewCompare').modal('show');-->
+        <!--$('#iframe-compare-viewer').one('load', function () {-->
+            <!--$loading.addClass('hidden');-->
+            <!--$('#compare-container').removeClass('hidden');-->
+            <!--$loading.addClass('hidden');-->
+        <!--});-->
+    <!--});-->
+<!--</script>-->
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+{% endblock %}

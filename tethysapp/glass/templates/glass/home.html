@@ -1,0 +1,16 @@
+{% extends "glass/base.html" %}
+{% load staticfiles %}
+{% load tethys_gizmos %}
+
+{% block app_content %}
+
+<div id="map"></div>
+<div id="popup" class="popup"></div>
+<div id="info">&nbsp;</div>
+<!--{% gizmo map_view map_view_options %}-->
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+{% endblock %}
+
